@@ -47,8 +47,8 @@ module.exports = {
     (err, res, body) => {
       if (!err) {
         let result = {};
-        body.data.tankLevel.value === 'null' ? result.percent = body.data.batteryLevel.value :
-        result.percent = body.data.tankLevel.value;
+        body.data.tankLevel.value === 'null' ? result.percent = parseInt(body.data.batteryLevel.value) :
+        result.percent = parseInt(body.data.tankLevel.value);
         response.json(result);    
       } else if (err) {
         response.json(err);

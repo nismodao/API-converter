@@ -241,5 +241,123 @@ describe ('Security endpoint', () => {
       }
     });    
   });
+});
+
+describe ('Fuel Range endpoint', () => {
+
+  it('/vehicles/:id/fuel should exist', (done) => {
+    var id = 1234;
+    request.get({url: 'http://localhost:3000/vehicles/' + id + '/fuel'},
+    (err, res, body) => {
+      if (!err) {
+        expect(res.req.path).to.equal('/vehicles/1234/fuel');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+
+  it('/vehicles/:id/fuel should have GET method', (done) => {
+    var id = 1234;
+    request.get({url: 'http://localhost:3000/vehicles/' + id + '/fuel'},
+    (err, res, body) => {
+      if (!err) {
+        expect(res.req.method).to.equal('GET');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+
+  it('/vehicles/:id/fuel should return a JSON string', (done) => {
+    var id = 1234;
+    request.get({url: 'http://localhost:3000/vehicles/' + id + '/fuel'},
+    (err, res, body) => {
+      if (!err) {
+        expect(typeof JSON.parse(body)).to.equal('object');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+
+  it('/vehicles/:id/fuel should contain a \'percent\' key with a number value', (done) => {
+    var id = 1234;
+    request.get({url: 'http://localhost:3000/vehicles/' + id + '/fuel'},
+    (err, res, body) => {
+      if (!err) {
+        expect(typeof JSON.parse(body).percent).to.equal('number');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
 }); 
 
+describe ('Battery Range endpoint', () => {
+
+  it('/vehicles/:id/battery should exist', (done) => {
+    var id = 1235;
+    request.get({url: 'http://localhost:3000/vehicles/' + id + '/battery'},
+    (err, res, body) => {
+      if (!err) {
+        expect(res.req.path).to.equal('/vehicles/1235/battery');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+
+  it('/vehicles/:id/battery should have GET method', (done) => {
+    var id = 1235;
+    request.get({url: 'http://localhost:3000/vehicles/' + id + '/battery'},
+    (err, res, body) => {
+      if (!err) {
+        expect(res.req.method).to.equal('GET');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+
+  it('/vehicles/:id/battery should return a JSON string', (done) => {
+    var id = 1235;
+    request.get({url: 'http://localhost:3000/vehicles/' + id + '/battery'},
+    (err, res, body) => {
+      if (!err) {
+        expect(typeof JSON.parse(body)).to.equal('object');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+
+  it('/vehicles/:id/battery should contain a \'percent\' key with a number value', (done) => {
+    var id = 1235;
+    request.get({url: 'http://localhost:3000/vehicles/' + id + '/battery'},
+    (err, res, body) => {
+      if (!err) {
+        expect(typeof JSON.parse(body).percent).to.equal('number');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+}); 
+ 
