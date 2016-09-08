@@ -28,7 +28,7 @@ module.exports = {
         body.data.doors.values.forEach(element => {
           let item = {};
           item.location = element.location.value;
-          item.locked = element.locked.value;
+          item.locked = element.locked.value === "True" ? true : false;
           if (item.location === "frontLeft") result[0] = item;
           if (item.location === "frontRight") result[1] = item;
           if (item.location === "backLeft") result[2] = item;
