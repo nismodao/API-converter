@@ -4,7 +4,7 @@ const request = require('request');
 describe ('Vehicle Info endpoint', () => {
 
   it('/vehicles/:id should exist', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id},
     (err, res, body) => {
       if (!err) {
@@ -18,7 +18,7 @@ describe ('Vehicle Info endpoint', () => {
   });
 
   it('/vehicles/:id should have GET method', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id},
     (err, res, body) => {
       if (!err) {
@@ -32,7 +32,7 @@ describe ('Vehicle Info endpoint', () => {
   });
 
   it('/vehicles/:id should return a JSON string', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id},
     (err, res, body) => {
       if (!err) {
@@ -46,7 +46,7 @@ describe ('Vehicle Info endpoint', () => {
   });
 
   it('/vehicles/:id should return \'vin\' key with string value', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id},
     (err, res, body) => {
       if (!err) {
@@ -59,8 +59,36 @@ describe ('Vehicle Info endpoint', () => {
     });    
   });
 
+  it('/vehicles/:id should return \'vin\' key with correct string value', (done) => {
+    let id = 1234;
+    request.get({url: 'http://localhost:3000/vehicles/' + id},
+    (err, res, body) => {
+      if (!err) {
+        expect(JSON.parse(body).vin).to.equal('123123412412');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+
+  it('/vehicles/:id should return \'vin\' key with correct string value if provided a different car', (done) => {
+    let id = 1235;
+    request.get({url: 'http://localhost:3000/vehicles/' + id},
+    (err, res, body) => {
+      if (!err) {
+        expect(JSON.parse(body).vin).to.equal('1235AZ91XP');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+
   it('/vehicles/:id should return color \'key\' with string value', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id},
     (err, res, body) => {
       if (!err) {
@@ -74,7 +102,7 @@ describe ('Vehicle Info endpoint', () => {
   });
 
   it('/vehicles/:id should return \'doorCount\' key with number value', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id},
     (err, res, body) => {
       if (!err) {
@@ -88,7 +116,7 @@ describe ('Vehicle Info endpoint', () => {
   });
 
   it('/vehicles/:id should return \'driveTrain\' key with string value', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id},
     (err, res, body) => {
       if (!err) {
@@ -105,7 +133,7 @@ describe ('Vehicle Info endpoint', () => {
 describe ('Security endpoint', () => {
 
   it('/vehicles/:id/doors should exist', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/doors'},
     (err, res, body) => {
       if (!err) {
@@ -119,7 +147,7 @@ describe ('Security endpoint', () => {
   });
 
   it('/vehicles/:id/doors should have GET method', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/doors'},
     (err, res, body) => {
       if (!err) {
@@ -133,7 +161,7 @@ describe ('Security endpoint', () => {
   });
 
   it('/vehicles/:id/doors should return a JSON string', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/doors'},
     (err, res, body) => {
       if (!err) {
@@ -147,7 +175,7 @@ describe ('Security endpoint', () => {
   });
 
   it('/vehicles/:id/doors should return an array of length 4 for a 4 door car', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/doors'},
     (err, res, body) => {
       if (!err) {
@@ -162,11 +190,11 @@ describe ('Security endpoint', () => {
 
   it('/vehicles/:id/doors should return an array with location index, for a 4 door car as, \'[frontLeft, frontRight, backLeft, backRight]\'',
    (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/doors'},
     (err, res, body) => {
       if (!err) {
-        var door = ["frontLeft", "frontRight", "backLeft", "backRight"];
+        let door = ["frontLeft", "frontRight", "backLeft", "backRight"];
         JSON.parse(body).forEach((element,index) => {
           expect(element.location).to.equal(door[index]);
         });
@@ -179,7 +207,7 @@ describe ('Security endpoint', () => {
   });
 
   it('/vehicles/:id/doors should return an array of length 2 for a 2 door car', (done) => {
-    var id = 1235;
+    let id = 1235;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/doors'},
     (err, res, body) => {
       if (!err) {
@@ -194,11 +222,11 @@ describe ('Security endpoint', () => {
 
   it('/vehicles/:id/doors should return an array with location index, for a 2 door car as, \'[frontLeft, frontRight]\'',
    (done) => {
-    var id = 1235;
+    let id = 1235;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/doors'},
     (err, res, body) => {
       if (!err) {
-        var door = ["frontLeft", "frontRight"];
+        let door = ["frontLeft", "frontRight"];
         JSON.parse(body).forEach((element,index) => {
           expect(element.location).to.equal(door[index]);
         });
@@ -211,7 +239,7 @@ describe ('Security endpoint', () => {
   });
 
   it('/vehicles/:id should return a \'locked\' key with a boolean value', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/doors'},
     (err, res, body) => {
       if (!err) {
@@ -227,7 +255,7 @@ describe ('Security endpoint', () => {
   });
 
   it('/vehicles/:id should return a \'location\' key with a string value', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/doors'},
     (err, res, body) => {
       if (!err) {
@@ -246,7 +274,7 @@ describe ('Security endpoint', () => {
 describe ('Fuel Range endpoint', () => {
 
   it('/vehicles/:id/fuel should exist', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/fuel'},
     (err, res, body) => {
       if (!err) {
@@ -360,4 +388,66 @@ describe ('Battery Range endpoint', () => {
     });    
   });
 }); 
+
+describe ('Engine endpoint', () => {
+
+  it('/vehicles/:id/engine should exist', (done) => {
+    let id = 1235;
+    request.post({url: 'http://localhost:3000/vehicles/' + id + '/engine'},
+    (err, res, body) => {
+      if (!err) {
+        expect(res.req.path).to.equal('/vehicles/1235/engine');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+
+  it('/vehicles/:id/engine should have POST method', (done) => {
+    let id = 1235;
+    request.post({url: 'http://localhost:3000/vehicles/' + id + '/engine'},
+    (err, res, body) => {
+      if (!err) {
+        expect(res.req.method).to.equal('POST');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+
+  it('/vehicles/:id/engine should return an object', (done) => {
+    let id = 1235;
+    let action = "START"; 
+    request.post({url: 'http://localhost:3000/vehicles/' + id + '/engine', json:{action: action}},
+    (err, res, body) => {
+      if (!err) {
+        expect(typeof body).to.equal('object');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+
+  it('/vehicles/:id/engine response should contain a \'success\' key with string value', (done) => {
+    let id = 1235;
+    let action = "START"; 
+    request.post({url: 'http://localhost:3000/vehicles/' + id + '/engine', json:{action: action}},
+    (err, res, body) => {
+      if (!err) {
+        expect(typeof body.status).to.equal('string');
+        done();  
+      } else if (err) {
+        console.log(err);
+        done();        
+      }
+    });    
+  });
+}); 
+
  
