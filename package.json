@@ -1,7 +1,7 @@
 {
-  "name": "API converter",
+  "name": "API-converter",
   "version": "1.0.0",
-  "description": "API converter",
+  "description": "API-converter",
   "main": "index.js",
   "scripts": {
     "test": "node app.js & mocha --bail --reporter nyan test/spec.js; pkill -n node;"
