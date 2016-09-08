@@ -1,0 +1,18 @@
+{
+  "name": "API converter",
+  "version": "1.0.0",
+  "description": "API converter",
+  "main": "index.js",
+  "scripts": {
+    "test": "node app.js & mocha --bail --reporter nyan test/spec.js; pkill -n node;"
+  },
+  "author": "Nam Dao",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
+    "mocha": "^3.0.2",
+    "request": "^2.74.0"
+  }
+}
