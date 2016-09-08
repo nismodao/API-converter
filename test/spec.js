@@ -288,7 +288,7 @@ describe ('Fuel Range endpoint', () => {
   });
 
   it('/vehicles/:id/fuel should have GET method', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/fuel'},
     (err, res, body) => {
       if (!err) {
@@ -302,7 +302,7 @@ describe ('Fuel Range endpoint', () => {
   });
 
   it('/vehicles/:id/fuel should return a JSON string', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/fuel'},
     (err, res, body) => {
       if (!err) {
@@ -316,7 +316,7 @@ describe ('Fuel Range endpoint', () => {
   });
 
   it('/vehicles/:id/fuel should contain a \'percent\' key with a number value', (done) => {
-    var id = 1234;
+    let id = 1234;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/fuel'},
     (err, res, body) => {
       if (!err) {
@@ -333,7 +333,7 @@ describe ('Fuel Range endpoint', () => {
 describe ('Battery Range endpoint', () => {
 
   it('/vehicles/:id/battery should exist', (done) => {
-    var id = 1235;
+    let id = 1235;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/battery'},
     (err, res, body) => {
       if (!err) {
@@ -347,7 +347,7 @@ describe ('Battery Range endpoint', () => {
   });
 
   it('/vehicles/:id/battery should have GET method', (done) => {
-    var id = 1235;
+    let id = 1235;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/battery'},
     (err, res, body) => {
       if (!err) {
@@ -361,7 +361,7 @@ describe ('Battery Range endpoint', () => {
   });
 
   it('/vehicles/:id/battery should return a JSON string', (done) => {
-    var id = 1235;
+    let id = 1235;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/battery'},
     (err, res, body) => {
       if (!err) {
@@ -375,7 +375,7 @@ describe ('Battery Range endpoint', () => {
   });
 
   it('/vehicles/:id/battery should contain a \'percent\' key with a number value', (done) => {
-    var id = 1235;
+    let id = 1235;
     request.get({url: 'http://localhost:3000/vehicles/' + id + '/battery'},
     (err, res, body) => {
       if (!err) {

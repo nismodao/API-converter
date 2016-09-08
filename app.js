@@ -23,6 +23,6 @@ app.get('/vehicles/:id/battery', route.getRange);
 
 app.post('/vehicles/:id/engine', route.activate);
 
-app.listen(3000, function () {
+app.listen(3000, () => {
   console.log('Express listening on port ' + PORT + '!');
 });
