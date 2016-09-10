@@ -4,7 +4,8 @@
   "description": "API-converter",
   "main": "index.js",
   "scripts": {
-    "test": "node app.js & mocha --bail --reporter nyan test/spec.js; pkill -n node;"
+    "test": "node app.js & mocha --bail --reporter nyan test/spec.js; pkill -n node;",
+    "start": "node app.js"
   },
   "author": "Nam Dao",
   "license": "ISC",
